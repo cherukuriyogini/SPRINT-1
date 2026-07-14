@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ============================================================
+   SMART WISHLIST — GLOBAL STYLES
+   Design tokens, typography, and utility overrides
+   ============================================================ */
+
+/* ── CSS Custom Properties (Design Tokens) ────────────────── */
+:root {
+  /* Flipkart Brand Colors */
+  --color-primary: #2874f0;
+  --color-primary-dark: #1a5dc8;
+  --color-primary-light: #e8f0fe;
+  --color-accent: #fb641b;
+  --color-accent-dark: #e05510;
+
+  /* Neutrals */
+  --color-bg: #f1f3f6;
+  --color-surface: #ffffff;
+  --color-border: #e0e0e0;
+  --color-text-primary: #212121;
+  --color-text-secondary: #878787;
+  --color-text-muted: #b0b0b0;
+
+  /* Status Colors */
+  --color-success: #26a541;
+  --color-warning: #ff9800;
+  --color-error: #ff4d4d;
+  --color-info: #2196f3;
+
+  /* Stock Status */
+  --color-in-stock: #26a541;
+  --color-low-stock: #ff9800;
+  --color-out-of-stock: #ff4d4d;
+
+  /* Shadows */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --shadow-navbar: 0 1px 8px rgba(0, 0, 0, 0.2);
+  --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+  /* Spacing */
+  --radius-card: 8px;
+  --radius-btn: 4px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ── Base Reset & Typography ──────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar Styling ────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ── Focus Styles (Accessibility) ────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Image Defaults ───────────────────────────────────────── */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Interactive Elements ─────────────────────────────────── */
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Skeleton Shimmer Animation ───────────────────────────── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-card);
+}
+
+/* ── Fade-in Animation ────────────────────────────────────── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* ── Pulse Animation for Stock Sync ──────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+/* ── Line Clamp Utility ───────────────────────────────────── */
+.line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+.line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
