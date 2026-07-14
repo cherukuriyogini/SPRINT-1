@@ -9,6 +9,7 @@
  * ─────────────────────────────────────────────────────────────
  */
 
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -33,6 +34,7 @@ export default function Navbar() {
   const wishlistCount = 5;
 
   // Load user session on mount
+  //commenting 
   useEffect(() => {
     const loadUser = () => {
       const stored = localStorage.getItem("smart_wishlist_user");
@@ -211,6 +213,7 @@ export default function Navbar() {
                 Login / Signup
               </Link>
             )}
+            
           </div>
         </div>
       )}
