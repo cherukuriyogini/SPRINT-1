@@ -174,7 +174,7 @@ export default function LoginForm() {
 
         {/* Terms Disclaimer - Matched precisely to mockup */}
         <p className="text-[12px] text-[#878787] leading-relaxed mt-2 select-none">
-          By continuing, you agree to Flipkart's{" "}
+          By continuing, you agree to Flipkart&apos;s{" "}
           <Link href="/terms" onClick={(e) => e.preventDefault()} className="text-[#2874f0] hover:underline font-medium">
             Terms of Use
           </Link>{" "}
@@ -235,8 +235,7 @@ export default function LoginForm() {
       {/* Account Creation Link - Matched to mockup */}
       <div className="text-center mt-6">
         <Link
-          href="/signup"
-          onClick={(e) => e.preventDefault()} // Prototype placeholder
+          href="/register"
           className="text-[14px] font-bold text-[#2874f0] hover:underline focus:underline outline-none rounded p-1"
         >
           New to Flipkart? Create an account
