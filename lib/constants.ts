@@ -9,7 +9,7 @@
 export const APP_NAME    = "Smart Wishlist";
 export const APP_TAGLINE = "Smarter Shopping Starts Here";
 export const APP_DESCRIPTION =
-  "Flipkart's Smart Wishlist automatically monitors stock, notifies you instantly, and lets you move items to cart in one click.";
+  "Smart Wishlist monitors prices, tracks stock availability, and helps you manage your wishlist with a premium shopping experience.";
 
 // ── Routes ───────────────────────────────────────────────────
 export const ROUTES = {

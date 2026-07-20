@@ -9,10 +9,10 @@ import { WishlistItem as WishlistItemType } from "@/types";
 
 export default function WishlistCard({ item }: { item: WishlistItemType }) {
   return (
-    <div className="bg-white p-4 border border-gray-200 rounded-md shadow-sm mb-4">
+    <div className="bg-white p-4 border border-gray-200 shadow-sm mb-4">
       {/* Visual placeholder for Phase 1 */}
       <div className="flex gap-4">
-        <div className="w-24 h-24 bg-gray-100 rounded-md flex items-center justify-center text-xs text-gray-400">
+        <div className="w-24 h-24 bg-gray-100 flex items-center justify-center text-xs text-gray-400">
           Image
         </div>
         <div className="flex-1">

@@ -1,117 +1,144 @@
-/**
- * components/ui/Button.tsx
- * ─────────────────────────────────────────────────────────────
- * Reusable button component with Flipkart-style variants.
- * Supports both <button> and <a> (via href) rendering.
- * ─────────────────────────────────────────────────────────────
- */
+"use client";
 
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import React from "react";
+import { Loader2 } from "lucide-react";
 import type { ButtonVariant, ButtonSize } from "@/types";
 
-interface ButtonProps {
-  children: React.ReactNode;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  href?: string;
-  onClick?: () => void;
-  disabled?: boolean;
-  loading?: boolean;
-  fullWidth?: boolean;
-  type?: "button" | "submit" | "reset";
-  className?: string;
-  id?: string;
-  "aria-label"?: string;
-}
+type Variant = ButtonVariant;
 
-const variantStyles: Record<ButtonVariant, string> = {
+type Size = ButtonSize;
+
+type ButtonProps =
+  | ({ href: string } & React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+      variant?: Variant;
+      size?: Size;
+      loading?: boolean;
+      disabled?: boolean;
+      fullWidth?: boolean;
+      leftIcon?: React.ReactNode;
+      rightIcon?: React.ReactNode;
+      className?: string;
+    })
+  | ({ href?: undefined } & React.ButtonHTMLAttributes<HTMLButtonElement> & {
+      variant?: Variant;
+      size?: Size;
+      loading?: boolean;
+      disabled?: boolean;
+      fullWidth?: boolean;
+      leftIcon?: React.ReactNode;
+      rightIcon?: React.ReactNode;
+      className?: string;
+    });
+
+const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-[#2874f0] text-white hover:bg-[#1a5dc8] active:bg-[#1550b0] shadow-sm",
+    "bg-[#2874F0] text-white hover:bg-[#1d64d8] shadow-md hover:shadow-xl",
+
   secondary:
-    "bg-white text-[#2874f0] border border-[#2874f0] hover:bg-[#e8f0fe] active:bg-[#d0e2fd]",
-  accent:
-    "bg-[#fb641b] text-white hover:bg-[#e05510] active:bg-[#c94b0f] shadow-sm",
-  ghost:
-    "bg-transparent text-[#2874f0] hover:bg-[#e8f0fe] active:bg-[#d0e2fd]",
+    "bg-gray-100 text-gray-900 hover:bg-gray-200 shadow-sm",
+
   outline:
-    "bg-transparent text-[#212121] border border-[#e0e0e0] hover:bg-gray-50 active:bg-gray-100",
+    "border border-[#2874F0] text-[#2874F0] hover:bg-[#2874F0] hover:text-white",
+
+  ghost:
+    "text-gray-700 hover:bg-gray-100",
+
   danger:
-    "bg-[#ff4d4d] text-white hover:bg-[#e63e3e] active:bg-[#cc3636] shadow-sm",
+    "bg-red-500 text-white hover:bg-red-600 shadow-md",
+
+  success:
+    "bg-green-600 text-white hover:bg-green-700 shadow-md",
+
+  accent:
+    "bg-[#ff9f00] text-white hover:bg-[#e08e00] shadow-md",
+
+  flipkart:
+    "bg-[#2874f0] text-white hover:bg-[#1a5ed0] shadow-md",
 };
 
-const sizeStyles: Record<ButtonSize, string> = {
-  xs: "px-3 py-1.5 text-xs font-medium rounded",
-  sm: "px-4 py-2 text-sm font-medium rounded",
-  md: "px-6 py-2.5 text-sm font-semibold rounded",
-  lg: "px-8 py-3 text-base font-semibold rounded",
+const sizeClasses: Record<Size, string> = {
+  xs: "h-8 px-3 text-xs",
+  sm: "h-9 px-4 text-sm",
+  md: "h-11 px-6 text-sm",
+  lg: "h-12 px-8 text-base",
 };
 
 export default function Button({
   children,
   variant = "primary",
   size = "md",
-  href,
-  onClick,
-  disabled = false,
   loading = false,
+  disabled = false,
   fullWidth = false,
-  type = "button",
-  className,
-  id,
-  "aria-label": ariaLabel,
+  leftIcon,
+  rightIcon,
+  className = "",
+  ...props
 }: ButtonProps) {
-  const base = cn(
-    "inline-flex items-center justify-center gap-2 transition-all duration-150",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#2874f0] focus-visible:outline-offset-2",
-    "disabled:opacity-50 disabled:cursor-not-allowed",
-    variantStyles[variant],
-    sizeStyles[size],
-    fullWidth && "w-full",
-    className
-  );
+  const classes = `
+        inline-flex
+        items-center
+        justify-center
+        gap-2
+        rounded-xl
+        font-semibold
+        transition-all
+        duration-300
+        active:scale-95
+        hover:scale-[1.02]
+        disabled:cursor-not-allowed
+        disabled:opacity-60
+        focus:outline-none
+        focus:ring-2
+        focus:ring-[#2874F0]
+        ${variantClasses[variant]}
+        ${sizeClasses[size]}
+        ${fullWidth ? "w-full" : ""}
+        ${className}
+      `;
 
-  if (href && !disabled) {
+  if ("href" in props && props.href) {
+    const { href, ...anchorProps } = props as React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+      href: string;
+    };
+
     return (
-      <Link href={href} className={base} id={id} aria-label={ariaLabel}>
-        {children}
+      <Link href={href} className={classes} {...anchorProps}>
+        {loading ? (
+          <>
+            <Loader2 className="h-4 w-4 animate-spin" />
+            Loading...
+          </>
+        ) : (
+          <>
+            {leftIcon}
+            {children}
+            {rightIcon}
+          </>
+        )}
       </Link>
     );
   }
 
   return (
     <button
-      type={type}
-      onClick={onClick}
       disabled={disabled || loading}
-      className={base}
-      id={id}
-      aria-label={ariaLabel}
+      className={classes}
+      {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >
-      {loading && (
-        <svg
-          className="animate-spin h-4 w-4"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          />
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-          />
-        </svg>
+      {loading ? (
+        <>
+          <Loader2 className="h-4 w-4 animate-spin" />
+          Loading...
+        </>
+      ) : (
+        <>
+          {leftIcon}
+          {children}
+          {rightIcon}
+        </>
       )}
-      {children}
     </button>
   );
 }

@@ -7,7 +7,6 @@
 
 /* ── CSS Custom Properties (Design Tokens) ────────────────── */
 :root {
-  /* Flipkart Brand Colors */
   --color-primary: #2874f0;
   --color-primary-dark: #1a5dc8;
   --color-primary-light: #e8f0fe;
@@ -64,7 +63,7 @@ html {
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text-primary);
   line-height: 1.5;

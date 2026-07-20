@@ -26,7 +26,7 @@ export default function SectionHeading({
   return (
     <div
       className={cn(
-        "flex items-end justify-between gap-4",
+        "flex min-h-[64px] items-center justify-between gap-4",
         align === "center" && "flex-col items-center text-center",
         align === "right" && "flex-row-reverse",
         className

@@ -14,13 +14,13 @@ export default async function RecommendedProducts() {
   const products = await getRecommendedProducts();
 
   return (
-    <Container className="py-8">
+    <Container size="full" className="py-8 px-0">
       <SectionHeading
         title="Recommended For You"
         subtitle="Based on your recent browsing history"
         className="mb-6"
       />
-      <div className="bg-white p-4 rounded-md shadow-sm border border-gray-100">
+      <div className="bg-white p-4 border border-slate-200 shadow-sm rounded-sm">
         <ProductGrid products={products} />
       </div>
     </Container>

@@ -17,8 +17,8 @@ interface ContainerProps {
 }
 
 const sizeMap = {
-  default: "max-w-7xl",
-  narrow:  "max-w-4xl",
+  default: "max-w-[1280px]",
+  narrow:  "max-w-[1120px]",
   wide:    "max-w-screen-2xl",
   full:    "max-w-none",
 };
@@ -32,7 +32,7 @@ export default function Container({
   return (
     <Tag
       className={cn(
-        "mx-auto w-full px-4 sm:px-6 lg:px-8",
+        "mx-auto w-full px-6",
         sizeMap[size],
         className
       )}

@@ -44,7 +44,7 @@ export default function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 font-medium rounded-full",
+        "inline-flex items-center gap-1.5 font-medium",
         size === "sm" ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm",
         variantStyles[variant],
         className
@@ -53,7 +53,7 @@ export default function Badge({
       {dot && (
         <span
           className={cn(
-            "rounded-full flex-shrink-0",
+            "flex-shrink-0",
             size === "sm" ? "w-1.5 h-1.5" : "w-2 h-2",
             dotColors[variant]
           )}
