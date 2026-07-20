@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 90" role="img" aria-label="Flipkart logo">
+  <defs>
+    <linearGradient id="bagGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffdb00"/>
+      <stop offset="100%" stop-color="#f4c300"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="260" height="90" fill="none"/>
+  <rect x="14" y="18" width="48" height="44" rx="8" ry="8" fill="url(#bagGrad)" stroke="#f2c200" stroke-width="2"/>
+  <path d="M16 18c0-5.5 3.5-10 8-10h16c4.5 0 8 4.5 8 10" fill="none" stroke="#f2c200" stroke-width="4" stroke-linecap="round"/>
+  <path d="M24 32h20v4H24z" fill="#2874f0"/>
+  <path d="M24 38h20v4H24z" fill="#2874f0"/>
+  <path d="M24 44h16v4H24z" fill="#2874f0"/>
+  <path d="M24 50h12v4H24z" fill="#2874f0"/>
+  <text x="74" y="56" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#2874f0">Flipkart</text>
+</svg>

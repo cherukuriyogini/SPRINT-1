@@ -97,7 +97,7 @@ export default function PasswordField({
             onClick={togglePasswordVisibility}
             disabled={disabled}
             aria-label={showPassword ? "Hide password" : "Show password"}
-            className="absolute right-0 top-1.5 text-gray-400 hover:text-gray-600 focus:text-[#2874f0] outline-none p-1 rounded-full hover:bg-gray-100 transition-colors"
+            className="absolute right-0 top-1.5 text-gray-400 hover:text-gray-600 focus:text-[#2874f0] outline-none p-1 hover:bg-gray-100 transition-colors"
           >
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </button>

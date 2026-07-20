@@ -1,8 +1,7 @@
 /**
  * components/product/ProductGrid.tsx
  * ─────────────────────────────────────────────────────────────
- * Responsive grid for displaying ProductCards.
- * Supports loading states with SkeletonLoader.
+ * Modern Responsive Product Grid
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -24,25 +23,36 @@ export default function ProductGrid({
   skeletonCount = 8,
   className,
 }: ProductGridProps) {
+
   const gridClasses = cn(
-    "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4",
+    `
+    grid
+    grid-cols-1
+    sm:grid-cols-2
+    md:grid-cols-3
+    xl:grid-cols-4
+    gap-6
+    `,
     className
   );
 
   if (isLoading) {
     return (
       <div className={gridClasses}>
-        {Array.from({ length: skeletonCount }).map((_, i) => (
-          <SkeletonLoader key={i} variant="card" />
+        {Array.from({ length: skeletonCount }).map((_, index) => (
+          <SkeletonLoader
+            key={index}
+            variant="card"
+          />
         ))}
       </div>
     );
   }
 
-  if (products.length === 0) {
+  if (!products.length) {
     return (
-      <div className="w-full py-12 text-center text-gray-500">
-        No products found.
+      <div className="flex h-72 items-center justify-center bg-white text-lg font-medium text-gray-500 shadow-sm">
+        No products available right now.
       </div>
     );
   }
@@ -50,7 +60,10 @@ export default function ProductGrid({
   return (
     <div className={gridClasses}>
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard
+          key={product.id}
+          product={product}
+        />
       ))}
     </div>
   );

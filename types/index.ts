@@ -95,7 +95,7 @@ export interface Banner {
 
 // ── UI State Types ───────────────────────────────────────────
 
-export type ButtonVariant = "primary" | "secondary" | "ghost" | "outline" | "danger" | "accent";
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "outline" | "danger" | "success" | "accent" | "flipkart";
 export type ButtonSize    = "xs" | "sm" | "md" | "lg";
 export type BadgeVariant  = "success" | "warning" | "error" | "info" | "default" | "primary";
 export type ToastType     = "success" | "error" | "warning" | "info";

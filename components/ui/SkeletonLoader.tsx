@@ -24,14 +24,14 @@ export default function SkeletonLoader({
   const getVariantClasses = () => {
     switch (variant) {
       case "card":
-        return "h-64 w-full rounded-md";
+        return "h-64 w-full";
       case "image":
-        return "h-48 w-full rounded-md";
+        return "h-48 w-full";
       case "list-item":
-        return "h-12 w-full rounded-sm";
+        return "h-12 w-full";
       case "text":
       default:
-        return "h-4 w-full rounded-sm";
+        return "h-4 w-full";
     }
   };
 

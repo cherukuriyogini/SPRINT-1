@@ -19,21 +19,17 @@ export default function CategoryCard({ category, className }: CategoryCardProps)
     <Link
       href={category.href}
       className={cn(
-        "group flex flex-col items-center gap-2 min-w-[72px] sm:min-w-[84px] snap-center",
+        "group flex min-w-[160px] flex-col border border-slate-200 bg-white p-4 text-left transition hover:border-[#2874f0] hover:shadow-lg",
         className
       )}
     >
-      <div
-        className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full shadow-sm transition-transform duration-200 group-hover:scale-105 group-hover:shadow-md"
-        style={{ backgroundColor: category.color }}
-      >
-        <span className="text-2xl sm:text-3xl" aria-hidden="true">
-          {category.icon}
-        </span>
+      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#bfdbfe] via-[#93c5fd] to-[#f8fafc] text-2xl shadow-sm">
+        <span aria-hidden="true">{category.icon}</span>
       </div>
-      <span className="text-xs sm:text-sm font-medium text-gray-800 text-center leading-tight">
-        {category.name}
-      </span>
+      <div className="mt-4">
+        <p className="text-sm font-semibold text-slate-900">{category.name}</p>
+        <p className="mt-1 text-xs text-slate-500">{category.productCount} products</p>
+      </div>
     </Link>
   );
 }

@@ -265,15 +265,15 @@ export default function RegisterForm() {
 
         {/* Terms Disclaimer */}
         <p className="text-[12px] text-[#878787] leading-relaxed mt-1 select-none">
-          By creating an account, you agree to Flipkart&apos;s{" "}
+          By creating an account, you agree to Smart Wishlist&apos;s{' '}
           <Link
             href="/terms"
             onClick={(e) => e.preventDefault()}
             className="text-[#2874f0] hover:underline font-medium"
           >
             Terms of Use
-          </Link>{" "}
-          and{" "}
+          </Link>{' '}
+          and{' '}
           <Link
             href="/privacy"
             onClick={(e) => e.preventDefault()}
@@ -289,7 +289,7 @@ export default function RegisterForm() {
           type="submit"
           disabled={isLoading}
           className={cn(
-            "w-full h-12 bg-[#FB641B] hover:bg-[#e05510] active:bg-[#c94b0f] text-white font-bold text-base tracking-wide rounded-sm shadow-xs transition-all duration-150 flex items-center justify-center gap-2",
+            "w-full h-12 bg-[#FB641B] hover:bg-[#e05510] active:bg-[#c94b0f] text-white font-bold text-base tracking-wide shadow-xs transition-all duration-150 flex items-center justify-center gap-2",
             "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FB641B] focus-visible:outline-offset-2",
             "disabled:opacity-75 disabled:cursor-not-allowed"
           )}

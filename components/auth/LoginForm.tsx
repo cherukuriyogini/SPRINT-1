@@ -97,24 +97,23 @@ export default function LoginForm() {
     }
   };
 
-  // Mock Google Sign-In Handler
   const handleGoogleSignIn = () => {
     setIsLoading(true);
     setGeneralError("");
     setSuccessMessage("");
-    
+
     setTimeout(() => {
       const mockUser = {
         email: "google.user@gmail.com",
         name: "Google User",
         isLoggedIn: true,
       };
-      
+
       localStorage.setItem("smart_wishlist_user", JSON.stringify(mockUser));
       window.dispatchEvent(new Event("auth-state-change"));
-      
+
       setSuccessMessage("Signed in with Google! Redirecting...");
-      
+
       setTimeout(() => {
         router.push("/");
         setIsLoading(false);
@@ -154,10 +153,10 @@ export default function LoginForm() {
           autoComplete="username"
         />
 
-        {/* Password Input (No Forgot Link to match mockup) */}
+        {/* Password Input */}
         <div className="flex flex-col relative">
           <PasswordField
-            label="Enter Password"
+            label="Password"
             name="password"
             value={password}
             onChange={(e) => {
@@ -172,27 +171,24 @@ export default function LoginForm() {
           />
         </div>
 
-        {/* Terms Disclaimer - Matched precisely to mockup */}
-        <p className="text-[12px] text-[#878787] leading-relaxed mt-2 select-none">
-          By continuing, you agree to Flipkart&apos;s{" "}
+        <p className="text-[12px] text-[#6b7280] leading-relaxed mt-1 select-none">
+          By continuing, you agree to Flipkart&apos;s{' '}
           <Link href="/terms" onClick={(e) => e.preventDefault()} className="text-[#2874f0] hover:underline font-medium">
             Terms of Use
-          </Link>{" "}
-          and{" "}
+          </Link>{' '}
+          and{' '}
           <Link href="/privacy" onClick={(e) => e.preventDefault()} className="text-[#2874f0] hover:underline font-medium">
             Privacy Policy
           </Link>
           .
         </p>
 
-        {/* Primary Submit Button (Flipkart orange style) */}
         <button
           type="submit"
           disabled={isLoading}
           className={cn(
-            "w-full h-12 bg-[#FB641B] hover:bg-[#e05510] active:bg-[#c94b0f] text-white font-bold text-base tracking-wide rounded-sm shadow-xs transition-all duration-150 flex items-center justify-center gap-2",
-            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FB641B] focus-visible:outline-offset-2",
-            "disabled:opacity-75 disabled:cursor-not-allowed"
+            "w-full h-12 bg-[#ff6600] text-white font-semibold tracking-wide shadow-sm transition duration-150 hover:bg-[#ff7a1a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ff6600] focus-visible:outline-offset-2 disabled:opacity-70 disabled:cursor-not-allowed",
+            "flex items-center justify-center gap-2"
           )}
         >
           {isLoading && (
@@ -222,23 +218,20 @@ export default function LoginForm() {
         </button>
       </form>
 
-      {/* Divider */}
       <div className="flex items-center justify-center gap-3 py-2 select-none">
-        <span className="h-[1px] bg-gray-200 flex-grow" />
-        <span className="text-xs font-semibold text-gray-400 font-sans tracking-wider">OR</span>
-        <span className="h-[1px] bg-gray-200 flex-grow" />
+        <span className="h-[1px] w-full bg-slate-200" />
+        <span className="text-xs font-semibold text-slate-400 tracking-wider">OR</span>
+        <span className="h-[1px] w-full bg-slate-200" />
       </div>
 
-      {/* Google Login Button */}
       <SocialLoginButton onGoogleSignIn={handleGoogleSignIn} disabled={isLoading} />
 
-      {/* Account Creation Link - Matched to mockup */}
       <div className="text-center mt-6">
         <Link
           href="/register"
-          className="text-[14px] font-bold text-[#2874f0] hover:underline focus:underline outline-none rounded p-1"
+          className="text-[14px] font-semibold text-[#2874f0] hover:underline"
         >
-          New to Flipkart? Create an account
+          New here? Create an account
         </Link>
       </div>
     </div>

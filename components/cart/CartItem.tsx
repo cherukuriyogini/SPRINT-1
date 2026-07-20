@@ -8,8 +8,8 @@ import { CartItem as CartItemType } from "@/types";
  */
 export default function CartItem({ item }: { item: CartItemType }) {
   return (
-    <div className="bg-white p-4 border border-gray-200 rounded-md mb-4 flex gap-4">
-      <div className="w-20 h-20 bg-gray-100 rounded-md flex items-center justify-center text-xs text-gray-400">
+    <div className="bg-white p-4 border border-gray-200 mb-4 flex gap-4">
+      <div className="w-20 h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-400">
         Image
       </div>
       <div className="flex-1">
